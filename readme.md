@@ -21,9 +21,6 @@ Date
 
 
 Objective
-
-
-
 Design and implement a system that stores clients, matters, and time entries.
 Implement methods to add new clients, matters, and time entries. Implement data validation to ensure each client has a unique display number, and each matter has a unique display number on a per-client basis. Note: Time entries can have hours that are not rounded floats.
 

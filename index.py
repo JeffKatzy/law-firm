@@ -1,43 +1,15 @@
-class Client:
-  def __init__(self, name, display_number):
-    self.name = name
-    self.display_number = display_number
-    self.validate_unique(display_number)
-    store['clients'][display_number] = self
+store = {'client': {}, 'matter': {}, 'time_entry': {}}
+# store global so accessible in Matter#total_hours
 
-  def validate_unique(self, unique_id):
-    if store['clients'].get(unique_id):
-      raise 'id not unique'
+class PointOneSystem:
+    pass
 
-class Matter:
-  def __init__(self, name, display_number, client_display_number):
-    self.name = name
-    self.display_number = display_number
-    self.client_display_number = client_display_number
-    unique_id = client_display_number +  '_' + display_number
-    self.validate_unique(unique_id)
-    store['matters'][unique_id] = self
+system = PointOneSystem()
+system.add_client("Dropbox Inc.", "C002")
+system.add_matter("C002", "Series C Financing", "M0004")
+system.add_time_entry("C002", "M0004", "Worked on project", 1.2134, "2024-01-11")
+system.add_time_entry("C002", "M0004", "Worked on project", 1, "2024-01-12")
 
-  def validate_unique(self, unique_id):
-    # if exists
-    if store['matters'].get(unique_id):
-      raise 'id not unique'
-
-  def total_hours(self):
-    unique_id = self.client_display_number +  '_' + self.display_number
-    entries = store['time_entries'][unique_id]
-    return sum([entry.hours for entry in entries])
-
-class TimeEntry:
-  def __init__(self, client_display_number, matter_display_number, narrative, hours, date):
-    self.narrative = narrative
-    self.client_display_number = client_display_number
-    self.matter_display_number = matter_display_number
-    self.hours = hours
-    self.date = date
-    unique_id = client_display_number +  '_' + matter_display_number
-    if store['time_entries'].get(unique_id):
-      store['time_entries'][unique_id].append(self)
-    else:
-      store['time_entries'][unique_id] = []
-      store['time_entries'][unique_id].append(self)
+matter = list(store['matter'].values())[0]
+total_hours = matter.total_hours_for_range("2024-01-11", "2024-01-13")
+print(total_hours)
