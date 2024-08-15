@@ -1,6 +1,6 @@
-PointOne Coding Interview
+Interview
 
-At PointOne, we manage law firms' clients, matters, and time entries. Lawyers work on different matters for various clients and bill their time accordingly.
+At X, we manage law firms' clients, matters, and time entries. Lawyers work on different matters for various clients and bill their time accordingly.
 
 For example, an attorney may be working on the Dropbox Inc. client, on their Series C Financing matter. And a time entry pertaining to that client-matter will describe the attorney's work and the duration of that work.
 
